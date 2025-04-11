@@ -2,62 +2,57 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>💌 Lời mời đặc biệt 💌</title>
+  <title>Rủ đi ăn 😋</title>
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #ffe6e6, #ffcccc);
-      overflow: hidden;
+      background: linear-gradient(135deg, #ffe6f0, #ffd6e0);
       height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
+      overflow: hidden;
     }
     .container {
-      text-align: center;
-      background: rgba(255, 240, 245, 0.9);
+      background: white;
       padding: 40px;
       border-radius: 20px;
-      box-shadow: 0 8px 16px rgba(255, 0, 102, 0.2);
+      box-shadow: 0 8px 24px rgba(255, 0, 102, 0.2);
+      text-align: center;
       max-width: 400px;
-      width: 90%;
-      position: relative;
-      z-index: 1;
     }
     h1 {
+      color: #e6005c;
       font-size: 24px;
       margin-bottom: 30px;
-      color: #b30000;
     }
     .buttons {
       display: flex;
       justify-content: center;
       gap: 20px;
+      position: relative;
     }
     button {
       padding: 12px 24px;
       font-size: 16px;
       border: none;
-      border-radius: 30px;
+      border-radius: 25px;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.2s ease;
     }
     .yes {
-      background-color: #ff4d4d;
+      background-color: #ff4d88;
       color: white;
-      animation: bounce 1s infinite;
-    }
-    .yes:hover {
-      background-color: #e60000;
+      position: absolute;
     }
     .no {
-      background-color: #ffffff;
-      color: #ff4d4d;
-      border: 2px solid #ff4d4d;
+      background-color: white;
+      color: #ff4d88;
+      border: 2px solid #ff4d88;
     }
     .no:hover {
-      background-color: #ffe6e6;
+      background-color: #ffe6ec;
     }
     .slide {
       display: none;
@@ -65,94 +60,36 @@
     .slide.active {
       display: block;
     }
-    .hearts {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 0;
-    }
-    .heart {
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: red;
-      transform: rotate(45deg);
-      animation: float 5s infinite;
-    }
-    .heart::before,
-    .heart::after {
-      content: '';
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: red;
-      border-radius: 50%;
-    }
-    .heart::before {
-      top: -10px;
-      left: 0;
-    }
-    .heart::after {
-      left: -10px;
-      top: 0;
-    }
-    @keyframes float {
-      0% {
-        transform: translateY(0) rotate(45deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-100vh) rotate(45deg);
-        opacity: 0;
-      }
-    }
-
-    @keyframes bounce {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
-    }
   </style>
 </head>
 <body>
-  <div class="hearts" id="hearts"></div>
   <div class="container">
     <div class="slide active" id="slide1">
-      <h1>5h đi ăn với em nhé? 🍜💕</h1>
+      <h1>5h đi ăn với em nhé? 🍱💖</h1>
       <div class="buttons">
-        <button class="yes" onclick="nextSlide()">Có 🥰</button>
-        <button class="no">Không 😢</button>
+        <button class="yes" id="yesBtn">Có 🥰</button>
+        <button class="no" onclick="nextSlide()">Không 😢</button>
       </div>
     </div>
     <div class="slide" id="slide2">
-      <h1>Yay! Vậy 5h mình gặp nhau nha 😍</h1>
+      <h1>😔 Thôi vậy để lần sau vậy...</h1>
     </div>
   </div>
 
   <script>
-    function nextSlide() {
-      document.getElementById('slide1').classList.remove('active');
-      document.getElementById('slide2').classList.add('active');
-    }
+    const yesBtn = document.getElementById("yesBtn");
 
-    // Trái tim rơi
-    const heartsContainer = document.getElementById('hearts');
-    setInterval(() => {
-      const heart = document.createElement('div');
-      heart.classList.add('heart');
-      heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.top = Math.random() * 100 + 'vh';
-      heartsContainer.appendChild(heart);
-      setTimeout(() => {
-        heart.remove();
-      }, 5000);
-    }, 300);
+    yesBtn.addEventListener("mouseover", () => {
+      const i = Math.floor(Math.random() * 300);
+      const j = Math.floor(Math.random() * 300);
+      yesBtn.style.top = i + "px";
+      yesBtn.style.left = j + "px";
+    });
+
+    function nextSlide() {
+      document.getElementById("slide1").classList.remove("active");
+      document.getElementById("slide2").classList.add("active");
+    }
   </script>
 </body>
 </html>
