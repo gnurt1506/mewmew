@@ -46,6 +46,7 @@
     .yes {
       background-color: #ff4d4d;
       color: white;
+      animation: bounce 1s infinite;
     }
     .yes:hover {
       background-color: #e60000;
@@ -54,7 +55,6 @@
       background-color: #ffffff;
       color: #ff4d4d;
       border: 2px solid #ff4d4d;
-      position: relative;
     }
     .no:hover {
       background-color: #ffe6e6;
@@ -109,20 +109,29 @@
         opacity: 0;
       }
     }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
   </style>
 </head>
 <body>
   <div class="hearts" id="hearts"></div>
   <div class="container">
     <div class="slide active" id="slide1">
-      <h1>Em có muốn đi chơi với anh không? 💖</h1>
+      <h1>5h đi ăn với em nhé? 🍜💕</h1>
       <div class="buttons">
         <button class="yes" onclick="nextSlide()">Có 🥰</button>
-        <button class="no" id="noBtn">Không 😢</button>
+        <button class="no">Không 😢</button>
       </div>
     </div>
     <div class="slide" id="slide2">
-      <h1>Yay! Hẹn em lúc 7h tối nay nhé! 💕</h1>
+      <h1>Yay! Vậy 5h mình gặp nhau nha 😍</h1>
     </div>
   </div>
 
@@ -132,7 +141,7 @@
       document.getElementById('slide2').classList.add('active');
     }
 
-    // Tạo hiệu ứng trái tim rơi
+    // Trái tim rơi
     const heartsContainer = document.getElementById('hearts');
     setInterval(() => {
       const heart = document.createElement('div');
@@ -144,14 +153,6 @@
         heart.remove();
       }, 5000);
     }, 300);
-
-    // Nút "Không" di chuyển khi hover
-    const noBtn = document.getElementById('noBtn');
-    noBtn.addEventListener('mouseover', () => {
-      const x = Math.random() * 300 - 150;
-      const y = Math.random() * 300 - 150;
-      noBtn.style.transform = `translate(${x}px, ${y}px)`;
-    });
   </script>
 </body>
 </html>
